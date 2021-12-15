@@ -1,14 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/screens/home_screen.dart';
-import 'package:twitter_clone/screens/splash_screen.dart';
+import 'screens/auth/signup.dart';
+import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,14 +20,10 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/': (context) => const SignUp(),
         '/home': (context) => const HomeScreen(),
+        '/signup': (context) => const SignUp(),
       },
     );
   }
 }
-
-
-//Dependencies added:
-//1. FontAwesomeFlutter - for Twitter icon
-//2. fluter_launcher_icons - to change App icons
