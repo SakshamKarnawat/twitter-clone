@@ -12,11 +12,11 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<UserModel?>(context);
     print(user);
     if (user == null) {
+      //auth routes:
       print("signup page");
       return const SignUp();
-    } else {
-      print("home page");
-      return const HomeScreen();
     }
+    //main routes:
+    return const HomeScreen();
   }
 }
